@@ -25,7 +25,7 @@ class MinValidator(object):
     MESSAGE = "The value must be greater than {min_value}"
 
     def validate(self, value, condition_value, errors):
-        if value < condition_value:
+        if int(value) < condition_value:
             errors.append(self.MESSAGE.format(min_value=condition_value))
 
 
@@ -35,6 +35,8 @@ class MinLengthValidator(object):
     def validate(self, value, condition_value, errors):
         if len(value) < condition_value:
             errors.append(self.MESSAGE.format(max_length=condition_value))
+
+
 
 
 class ValidatorType(Enum):

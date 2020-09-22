@@ -17,6 +17,7 @@ class TextConfiguration(QuestionConfiguration):
         QuestionConfiguration.__init__(self, False, [ValidatorType.REQUIRED, ValidatorType.MIN_LENGTH])
 
 
+
 class DateConfiguration(QuestionConfiguration):
     DATE_FORMAT = '%d/%m/%Y'
 
@@ -34,11 +35,15 @@ class PickOneQuestionConfiguration(QuestionConfiguration):
     def __init__(self):
         QuestionConfiguration.__init__(self, True, [ValidatorType.REQUIRED])
 
+class NumericConfiguration(QuestionConfiguration):
+    def __init__(self):
+        QuestionConfiguration.__init__(self, False, [ValidatorType.REQUIRED, ValidatorType.MIN])
 
 class QuestionType(Enum):
     TEXT = (1, TextConfiguration())
     DATE = (2, DateConfiguration())
     PICK_ONE = (3, PickOneQuestionConfiguration())
+    NUMERIC = (4, TextConfiguration())
 
     def __init__(self, code, configuration):
         self.code = code
